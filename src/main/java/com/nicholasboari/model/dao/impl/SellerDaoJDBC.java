@@ -39,8 +39,9 @@ public class SellerDaoJDBC implements SellerDao {
         Department dep = instantiateDepartment(rs);
         Seller obj = instantiateSeller(rs, dep);
         return obj;
+      } else {
+        throw new DbException("Id not found!");
       }
-      return null;
     } catch (SQLException e) {
       throw new DbException(e.getMessage());
     } finally {
@@ -156,7 +157,7 @@ public class SellerDaoJDBC implements SellerDao {
         }
         DbConnection.closeResultSet(rs);
       } else {
-        throw new DbException("Unexpected error! No rows affected");
+        throw new DbException("Unexpected error! No rows affected!");
       }
     } catch (SQLException e) {
       throw new DbException(e.getMessage());

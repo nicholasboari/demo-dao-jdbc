@@ -13,10 +13,10 @@ public class Program {
   public static void main(String[] args) {
 
     Scanner scan = new Scanner(System.in);
-    SellerDao sellerDao = DaoFactory.creatSellerDao();
+    SellerDao sellerDao = DaoFactory.createSellerDao();
 
     System.out.println("=== TEST 1: seller findById ===");
-    Seller seller = sellerDao.findById(5);
+    Seller seller = sellerDao.findById(1);
     System.out.println(seller);
 
     System.out.println("\n=== TEST 2: seller findByDepartment ===");
