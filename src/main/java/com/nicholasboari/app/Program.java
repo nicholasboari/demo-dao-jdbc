@@ -2,6 +2,7 @@ package com.nicholasboari.app;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Scanner;
 
 import com.nicholasboari.model.dao.DaoFactory;
 import com.nicholasboari.model.dao.SellerDao;
@@ -11,6 +12,7 @@ import com.nicholasboari.model.entities.Seller;
 public class Program {
   public static void main(String[] args) {
 
+    Scanner scan = new Scanner(System.in);
     SellerDao sellerDao = DaoFactory.creatSellerDao();
 
     System.out.println("=== TEST 1: seller findById ===");
@@ -36,9 +38,17 @@ public class Program {
     System.out.println("Inserted! New id = " + newSeller.getId());
 
     System.out.println("\n=== TEST 5: seller insert ===");
-    seller = sellerDao.findById(1);
+    seller = sellerDao.findById(30);
     seller.setName("Nicholas Boari");
     sellerDao.update(seller);
     System.out.println("Updated!");
+
+    System.out.println("\n=== TEST 6: seller delete ===");
+    System.out.println("Enter id for delete test: ");
+    int id = scan.nextInt();
+    sellerDao.deleteById(id);
+    System.out.println("Deleted!");
+
+    scan.close();
   }
 }
