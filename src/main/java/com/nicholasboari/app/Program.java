@@ -1,5 +1,6 @@
 package com.nicholasboari.app;
 
+import java.util.Date;
 import java.util.List;
 
 import com.nicholasboari.model.dao.DaoFactory;
@@ -28,5 +29,11 @@ public class Program {
     for (Seller s : sellers) {
       System.out.println(s);
     }
+
+    System.out.println("\n=== TEST 5: seller insert ===");
+    Seller newSeller = new Seller(null, "Matheus Boari", "matheus@boari", new Date(), 8000.0, department);
+    System.out.println(newSeller.getId());
+    sellerDao.insert(newSeller);
+    System.out.println("Inserted! New id = " + newSeller.getId());
   }
 }
